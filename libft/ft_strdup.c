@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sayoon <sayoon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 14:33:28 by sayoon            #+#    #+#             */
-/*   Updated: 2024/01/10 14:33:29 by sayoon           ###   ########.fr       */
+/*   Created: 2023/10/05 18:18:21 by sayoon            #+#    #+#             */
+/*   Updated: 2023/10/07 16:38:44 by sayoon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
+#include "stdlib.h"
 
-int	main()
+char	*ft_strdup(const char *s1)
 {
-	char	*str = ft_strdup("hihi\n");
-	ft_printf(1, "%s\n", str);
+	char	*tmp;
+
+	tmp = (char *)ft_malloc(sizeof(char) * ft_strlen(s1) + 1);
+	ft_memcpy(tmp, s1, ft_strlen(s1) + 1);
+	return (tmp);
 }

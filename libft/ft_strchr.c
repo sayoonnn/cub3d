@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sayoon <sayoon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 14:33:28 by sayoon            #+#    #+#             */
-/*   Updated: 2024/01/10 14:33:29 by sayoon           ###   ########.fr       */
+/*   Created: 2023/10/05 13:54:04 by sayoon            #+#    #+#             */
+/*   Updated: 2023/10/05 16:44:56 by sayoon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main()
+char	*ft_strchr(const char *s, int c)
 {
-	char	*str = ft_strdup("hihi\n");
-	ft_printf(1, "%s\n", str);
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
 }

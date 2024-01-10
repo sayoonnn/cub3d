@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sayoon <sayoon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 14:33:28 by sayoon            #+#    #+#             */
-/*   Updated: 2024/01/10 14:33:29 by sayoon           ###   ########.fr       */
+/*   Created: 2024/01/09 15:28:00 by sayoon            #+#    #+#             */
+/*   Updated: 2024/01/09 15:28:01 by sayoon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
+#include <stdio.h>
 
-int	main()
+void	*ft_malloc(size_t size)
 {
-	char	*str = ft_strdup("hihi\n");
-	ft_printf(1, "%s\n", str);
+	void	*tmp;
+
+	tmp = malloc(size);
+	if (!tmp)
+	{
+		perror("malloc: ");
+		exit(1);
+	}
+	return (tmp);
 }

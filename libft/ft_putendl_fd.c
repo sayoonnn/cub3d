@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sayoon <sayoon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 14:33:28 by sayoon            #+#    #+#             */
-/*   Updated: 2024/01/10 14:33:29 by sayoon           ###   ########.fr       */
+/*   Created: 2023/10/06 16:04:09 by sayoon            #+#    #+#             */
+/*   Updated: 2023/10/07 14:56:45 by sayoon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
+#include <unistd.h>
+#include <stdlib.h>
 
-int	main()
+void	ft_putendl_fd(char *s, int fd)
 {
-	char	*str = ft_strdup("hihi\n");
-	ft_printf(1, "%s\n", str);
+	if (write(fd, s, ft_strlen(s)) < 0)
+		exit(1);
+	if (write(fd, "\n", 1) < 0)
+		exit(1);
+	return ;
 }

@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sayoon <sayoon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 14:33:28 by sayoon            #+#    #+#             */
-/*   Updated: 2024/01/10 14:33:29 by sayoon           ###   ########.fr       */
+/*   Created: 2023/10/06 14:22:19 by sayoon            #+#    #+#             */
+/*   Updated: 2023/10/07 21:13:19 by sayoon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int	main()
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*str = ft_strdup("hihi\n");
-	ft_printf(1, "%s\n", str);
+	char	*tmp;
+
+	if (ft_strlen(s) <= start)
+		return (ft_strdup(""));
+	if (start + len > ft_strlen(s))
+		len = ft_strlen(s) - start;
+	tmp = (char *)ft_malloc((len + 1) * sizeof(char));
+	ft_memcpy(tmp, s + start, len);
+	*(tmp + len) = 0;
+	return (tmp);
 }

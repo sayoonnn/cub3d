@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sayoon <sayoon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 14:33:28 by sayoon            #+#    #+#             */
-/*   Updated: 2024/01/10 14:33:29 by sayoon           ###   ########.fr       */
+/*   Created: 2023/10/05 12:49:10 by sayoon            #+#    #+#             */
+/*   Updated: 2023/10/07 15:23:58 by sayoon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main()
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	char	*str = ft_strdup("hihi\n");
-	ft_printf(1, "%s\n", str);
+	size_t	cnt;
+
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	cnt = 0;
+	while (*(src + cnt) && cnt < dstsize - 1)
+	{
+		*(dst + cnt) = *(src + cnt);
+		cnt++;
+	}
+	*(dst + cnt) = 0;
+	return (ft_strlen(src));
 }
