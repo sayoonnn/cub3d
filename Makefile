@@ -12,32 +12,31 @@
 
 NAME	=	cub3d
 
-SRC		=	main.c
+SRC		=	main.c\
+			draw_screen.c\
+			init_player.c
+
+vpath %.c	$(addprefix src, /.)
 
 OBJDIR	=	.objs
 OBJ		=	$(SRC:%.c=$(OBJDIR)/%.o)
 
-INC		= includes
+INC		=	includes
 
-LIBMLX	= minilibx
-LIBMLXA	= minilibx/libmlx.a
 
-LIBFT	= libft
-LIBFTA	= libft/libft.a
+LIBFT	=	libft
+LIBFTA	=	libft/libft.a
 
-CC		= cc
-CFLAGS	= -Wall -Werror -Wextra
+CC		=	cc
+CFLAGS	=	-Wall -Werror -Wextra -fsanitize=address -g
+MLXFLAG	=	-lmlx -framework OpenGL -framework AppKit
 
 all :
 	@make $(NAME) -j8
 
-$(NAME): $(OBJ) $(LIBMLXA) $(LIBFTA)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBMLXA) $(LIBFTA) -o $@
+$(NAME): $(OBJ) $(LIBFTA)
+	@$(CC) $(CFLAGS) $(MLXFLAG) $(OBJ) $(LIBFTA) -o $@
 	@echo $(NAME) DONE ✅ 
-
-$(LIBMLXA):
-	@make -C $(LIBMLX)
-	@echo LIBMLX DONE ✅
 
 $(LIBFTA):
 	@make -C $(LIBFT)
@@ -50,7 +49,6 @@ $(OBJDIR):
 	@mkdir $(OBJDIR)
 
 clean:
-	@make -C $(LIBMLX) clean
 	@make -C $(LIBFT) fclean
 	@rm -rf $(OBJDIR)
 	@echo CLEAN DONE ✅
