@@ -15,47 +15,47 @@
 
 static void	move_fore_back(int key, t_player *p)
 {
-	int	dx;
-	int	dy;
+	double	dx;
+	double	dy;
 
-	dx = p->cam_x * p->move_speed;
-	dy = p->cam_y * p->move_speed;
+	dx = p->dir_x * p->move_speed;
+	dy = p->dir_y * p->move_speed;
 	if (key == key_w)
 	{
 		if (!worldMap[(int)(p->pos_x + dx)][(int)(p->pos_y)])
-			p->pos_x += p->dir_x * p->move_speed;
+			p->pos_x += dx;
 		if (!worldMap[(int)(p->pos_x)][(int)(p->pos_y + dy)])
-			p->pos_y += p->dir_y * p->move_speed;
+			p->pos_y += dy;
 	}
 	if (key == key_s)
 	{
 		if (!worldMap[(int)(p->pos_x - dx)][(int)(p->pos_y)])
-			p->pos_x -= p->dir_x * p->move_speed;
+			p->pos_x -= dx;
 		if (!worldMap[(int)(p->pos_x)][(int)(p->pos_y - dy)])
-			p->pos_y -= p->dir_y * p->move_speed;
+			p->pos_y -= dy;
 	}
 }
 
 static void	move_left_right(int key, t_player *p)
 {
-	int	dx;
-	int	dy;
+	double	dx;
+	double	dy;
 
-	dx = p->dir_x * p->move_speed;
-	dy = p->dir_y * p->move_speed;
+	dx = p->cam_x * p->move_speed;
+	dy = p->cam_y * p->move_speed;
 	if (key == key_a)
 	{
 		if (!worldMap[(int)(p->pos_x - dx)][(int)(p->pos_y)])
-			p->pos_x -= p->cam_x * p->move_speed;
+			p->pos_x -= dx;
 		if (!worldMap[(int)(p->pos_x)][(int)(p->pos_y - dy)])
-			p->pos_y -= p->cam_y * p->move_speed;
+			p->pos_y -= dy;
 	}
 	if (key == key_d)
 	{
 		if (!worldMap[(int)(p->pos_x + dx)][(int)(p->pos_y)])
-			p->pos_x += p->cam_x * p->move_speed;
+			p->pos_x += dx;
 		if (!worldMap[(int)(p->pos_x)][(int)(p->pos_y + dy)])
-			p->pos_y += p->cam_y * p->move_speed;
+			p->pos_y += dy;
 	}
 }
 

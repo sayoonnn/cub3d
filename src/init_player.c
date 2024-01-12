@@ -14,12 +14,17 @@
 
 void	init_player(t_player *p)
 {
-	p->pos_x = 1.5;
-	p->pos_y = 1.5;
-	p->dir_x = -1;
-	p->dir_y = 0;
-	p->cam_x = 0;
-	p->cam_y = 0.66;
+	p->pos_x = 2;
+	p->pos_y = 2;
+	p->dir_x = 0;
+	p->dir_y = 1;
+	p->cam_x = 0.66;
+	p->cam_y = 0;
 	p->move_speed = 0.1;
 	p->rot_speed = 0.1;
 }
+
+// 북 : -1 0	0 0.66
+// 동 : 0 1		0.66 0
+// 남 : 1 0		0 -0.66
+// 서 : 0 -1	-0.66 0
