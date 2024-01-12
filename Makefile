@@ -13,8 +13,14 @@
 NAME	=	cub3d
 
 SRC		=	main.c\
+			init_player.c\
+			draw_wall.c\
 			draw_screen.c\
-			init_player.c
+			draw_floor_ceil.c\
+			print_screen.c\
+			player_moves.c\
+			load_textures.c
+
 
 vpath %.c	$(addprefix src, /.)
 
@@ -22,27 +28,36 @@ OBJDIR	=	.objs
 OBJ		=	$(SRC:%.c=$(OBJDIR)/%.o)
 
 INC		=	includes
-
+HEADERS	=	includes/cub3d.h\
+			includes/types.h
 
 LIBFT	=	libft
 LIBFTA	=	libft/libft.a
 
+MLX		=	mlx
+MLXA	=	mlx/libmlx.a
+
 CC		=	cc
-CFLAGS	=	-Wall -Werror -Wextra -fsanitize=address -g
-MLXFLAG	=	-lmlx -framework OpenGL -framework AppKit
+CFLAGS	=	-Wall -Werror -Wextra -O3 
+#-g -fsanitize=address
+MLXFLAG	=	-framework OpenGL -framework AppKit
 
 all :
 	@make $(NAME) -j8
 
-$(NAME): $(OBJ) $(LIBFTA)
-	@$(CC) $(CFLAGS) $(MLXFLAG) $(OBJ) $(LIBFTA) -o $@
+$(NAME): $(OBJ) $(LIBFTA) $(MLXA)
+	@$(CC) $(CFLAGS) $(MLXFLAG) $(OBJ) $(LIBFTA) $(MLXA) -o $@
 	@echo $(NAME) DONE ✅ 
 
 $(LIBFTA):
 	@make -C $(LIBFT)
 	@echo LIBFT DONE ✅
 
-$(OBJDIR)/%.o: %.c | $(OBJDIR)
+$(MLXA):
+	@make -C $(MLX)
+	@echo MLX DONE ✅
+
+$(OBJDIR)/%.o: %.c  $(HEADERS) | $(OBJDIR)
 	@$(CC) $(CFLAGS) -I $(INC) -c $< -o $@
 
 $(OBJDIR):

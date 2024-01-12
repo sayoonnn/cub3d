@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_player.c                                      :+:      :+:    :+:   */
+/*   print_screen.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sayoon <sayoon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 19:53:33 by sayoon            #+#    #+#             */
-/*   Updated: 2024/01/10 19:53:34 by sayoon           ###   ########.fr       */
+/*   Created: 2024/01/12 17:05:40 by sayoon            #+#    #+#             */
+/*   Updated: 2024/01/12 17:05:41 by sayoon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_player(t_player *p)
+void	print_screen(t_win *win, t_img *screen)
 {
-	p->pos_x = 1.5;
-	p->pos_y = 1.5;
-	p->dir_x = -1;
-	p->dir_y = 0;
-	p->cam_x = 0;
-	p->cam_y = 0.66;
-	p->move_speed = 0.1;
-	p->rot_speed = 0.1;
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			screen->data[y * WIDTH + x] = win->buffer[y][x];
+			x++;
+		}
+		y++;
+	}
+	mlx_put_image_to_window(win->mlx, win->win, screen->img, 0, 0);
 }

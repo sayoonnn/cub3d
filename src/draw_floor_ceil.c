@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_player.c                                      :+:      :+:    :+:   */
+/*   draw_floor_ceil.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sayoon <sayoon@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 19:53:33 by sayoon            #+#    #+#             */
-/*   Updated: 2024/01/10 19:53:34 by sayoon           ###   ########.fr       */
+/*   Created: 2024/01/11 11:04:00 by sayoon            #+#    #+#             */
+/*   Updated: 2024/01/11 11:04:03 by sayoon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <math.h>
 
-void	init_player(t_player *p)
+void	draw_floor_ceil(t_vars *v, t_win *win, int x)
 {
-	p->pos_x = 1.5;
-	p->pos_y = 1.5;
-	p->dir_x = -1;
-	p->dir_y = 0;
-	p->cam_x = 0;
-	p->cam_y = 0.66;
-	p->move_speed = 0.1;
-	p->rot_speed = 0.1;
+	int	y;
+
+	if (v->draw_end < 0)
+		v->draw_end = HEIGHT;
+	y = v->draw_end + 1;
+	while (y < HEIGHT)
+	{
+		win->buffer[y][x] = 0x99FFFFFF;
+		win->buffer[HEIGHT - y][x] = 0xDEFFFFFF;
+		y++;
+	}
 }
