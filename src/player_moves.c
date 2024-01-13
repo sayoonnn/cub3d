@@ -93,8 +93,16 @@ int	key_press(int key, t_info *info)
 	else if (key == key_left || key == key_right)
 		rotate_cam(key, &info->p);
 	else if (key == key_esc)
-		exit(0);
+		exit_cub3d(info);
 	mlx_clear_window(info->win.mlx, info->win.win);
 	draw_screen(info);
 	return (0);
+}
+
+int	exit_cub3d(t_info *info)
+{
+	mlx_destroy_image(info->win.mlx, info->screen.img);
+	mlx_destroy_window(info->win.mlx, info->win.win);
+	exit(0);
+	return (1);
 }

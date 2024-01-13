@@ -20,8 +20,12 @@ static void	load_image(t_info *info, int *texture, char *path)
 
 	img.img = mlx_xpm_file_to_image(info->win.mlx, path, &img.img_width, \
 	&img.img_height);
+	if (!img.img)
+		print_err();
 	img.data = (int *)mlx_get_data_addr(img.img, &img.bpp, &img.size_l, \
 	&img.endian);
+	if (!img.data)
+		print_err();
 	y = 0;
 	while (y < img.img_height)
 	{
@@ -39,14 +43,18 @@ static void	load_image(t_info *info, int *texture, char *path)
 void	load_texture(t_info *info)
 {
 	load_image(info, info->t.east, "textures/greystone.xpm");
-	load_image(info, info->t.west, "textures/mossy.xpm");
-	load_image(info, info->t.south, "textures/wood.xpm");
-	load_image(info, info->t.north, "textures/pillar.xpm");
+	load_image(info, info->t.west, "textures/redbrick.xpm");
+	load_image(info, info->t.south, "textures/mossy.xpm");
+	load_image(info, info->t.north, "textures/eagle.xpm");
 }
 
 void	init_screen(t_win *win, t_img *screen)
 {
 	screen->img = mlx_new_image(win->mlx, WIDTH, HEIGHT);
+	if (!screen->img)
+		print_err();
 	screen->data = (int *)mlx_get_data_addr(screen->img, &screen->bpp, \
 	&screen->size_l, &screen->endian);
+	if (!screen->data)
+		print_err();
 }

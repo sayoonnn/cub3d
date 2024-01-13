@@ -35,6 +35,14 @@ enum e_keys
 	key_right = 124
 };
 
+enum e_direction
+{
+	east,
+	west,
+	south,
+	north
+};
+
 typedef struct s_win
 {
 	void	*mlx;
@@ -54,7 +62,7 @@ typedef struct s_player
 	double	rot_speed;
 }				t_player;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img;
 	int		*data;
@@ -91,7 +99,7 @@ typedef struct s_vars
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-	int		texture_start;
+	int		tex_start;
 
 }				t_vars;
 

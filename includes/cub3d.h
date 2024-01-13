@@ -28,8 +28,11 @@ void	print_screen(t_win *win, t_img *screen);
 void	init_player(t_player *p);
 
 int		key_press(int key, t_info *info);
+int		exit_cub3d(t_info *info);
 
 void	load_texture(t_info *info);
 void	init_screen(t_win *win, t_img *screen);
+
+void	print_err(void);
 
 #endif

@@ -87,19 +87,19 @@ void	detect_texture_pos(t_vars *v, t_player *p)
 	else
 		wall_x = p->pos_x + v->prep_wall_dist * v->raydir_x;
 	wall_x -= floor(wall_x);
-	v->texture_start = (int)(wall_x * (double)64);
+	v->tex_start = (int)(wall_x * (double)64);
 	if (v->side == 0 && v->raydir_x > 0)
-		v->texture_start = 64 - v->texture_start - 1;
+		v->tex_start = 64 - v->tex_start - 1;
 	if (v->side == 1 && v->raydir_y < 0)
-		v->texture_start = 64 - v->texture_start - 1;
+		v->tex_start = 64 - v->tex_start - 1;
 }
 
-void	fill_buffer(t_vars *v, t_win *win, t_texture *t, int x)
+void	fill_buffer(t_vars *v, t_info *info, int x)
 {
-	double	step;
-	double	tex_screen_position;
-	int		tex_end_point;
-	int		y;
+	double		step;
+	double		tex_screen_position;
+	int			tex_end;
+	int			y;
 
 	step = 1.0 * 64 / v->line_height;
 	tex_screen_position = (v->draw_start - HEIGHT / 2 + v->line_height / 2) \
@@ -107,12 +107,16 @@ void	fill_buffer(t_vars *v, t_win *win, t_texture *t, int x)
 	y = v->draw_start;
 	while (y < v->draw_end)
 	{
-		tex_end_point = (int)tex_screen_position & (64 - 1);
+		tex_end = (int)tex_screen_position & (64 - 1);
 		tex_screen_position += step;
-		if (v->side == SIDE_X)
-			win->buffer[y][x] = t->west[64 * v->texture_start + tex_end_point];
+		if (v->side == SIDE_X && v->cur_x > info->p.pos_x)
+			info->win.buffer[y][x] = info->t.north[64 * tex_end + v->tex_start];
+		else if (v->side == SIDE_X && v->cur_x < info->p.pos_x)
+			info->win.buffer[y][x] = info->t.south[64 * tex_end + v->tex_start];
+		else if (v->side == SIDE_Y && v->cur_y > info->p.pos_y)
+			info->win.buffer[y][x] = info->t.east[64 * tex_end + v->tex_start];
 		else
-			win->buffer[y][x] = t->east[64 * v->texture_start + tex_end_point];
+			info->win.buffer[y][x] = info->t.west[64 * tex_end + v->tex_start];
 		y++;
 	}
 }
@@ -124,5 +128,5 @@ void	draw_wall(t_info *info, t_vars *v, int x)
 	init_vars(v, &info->p, x);
 	check_wall(v);
 	detect_texture_pos(v, &info->p);
-	fill_buffer(v, &info->win, &info->t, x);
+	fill_buffer(v, info, x);
 }

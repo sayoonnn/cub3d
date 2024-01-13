@@ -19,7 +19,8 @@ SRC		=	main.c\
 			draw_floor_ceil.c\
 			print_screen.c\
 			player_moves.c\
-			load_textures.c
+			load_textures.c\
+			print_err.c
 
 
 vpath %.c	$(addprefix src, /.)
