@@ -12,8 +12,9 @@
 
 #include "cub3d.h"
 
-void	print_err(void)
+void	print_err(char *str)
 {
-	perror("malloc: ");
+	ft_printf(2, "Error\ncub3d: %s: ", str);
+	perror("");
 	exit(1);
 }

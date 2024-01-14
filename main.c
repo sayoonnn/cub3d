@@ -36,10 +36,10 @@ int	main(int ac, char **av)
 		return (1);
 	info.win.mlx = mlx_init();
 	if (!info.win.mlx)
-		print_err();
+		print_err("malloc: ");
 	info.win.win = mlx_new_window(info.win.mlx, WIDTH, HEIGHT, "cub3d");
 	if (!info.win.mlx)
-		print_err();
+		print_err("malloc: ");
 	init_screen(&info.win, &info.screen);
 	load_texture(&info);
 	init_player(&info.p, &info.map);

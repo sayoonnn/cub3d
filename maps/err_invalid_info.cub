@@ -1,12 +1,12 @@
 NO ./textures/bluestone.xpm
 SO ./textures/greystone.xpm
 WE ./textures/mossy.xpm
-EA ./textures/redbrick.xpm
+EA ./textures/hihi.xpm
 
 F 0,0,255
 C 255,0,0
 
 1111111
 1000001
-10W0001
+10E0001
 1111111

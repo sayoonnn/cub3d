@@ -80,8 +80,3 @@ void	init_player(t_player *p, t_mp *map)
 	p->move_speed = 0.1;
 	p->rot_speed = 0.1;
 }
-
-// 북 : -1 0	0 0.66
-// 동 : 0 1		0.66 0
-// 남 : 1 0		0 -0.66
-// 서 : 0 -1	-0.66 0

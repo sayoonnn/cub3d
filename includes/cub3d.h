@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <fcntl.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 # include "types.h"
@@ -32,6 +33,6 @@ int		exit_cub3d(t_info *info);
 void	load_texture(t_info *info);
 void	init_screen(t_win *win, t_img *screen);
 
-void	print_err(void);
+void	print_err(char *str);
 
 #endif
