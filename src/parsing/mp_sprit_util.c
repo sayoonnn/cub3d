@@ -17,7 +17,7 @@ int	mp_ft_sp_start(char **line, char **way, int *fc)
 	int	start;
 
 	if ((way != 0 && *way != 0) || (fc != 0 && *fc != -1))
-		mp_exit("cub3d: some elements are duplicated.", line);
+		mp_exit("cub3d: some elements are duplicated\n", line);
 	start = 0;
 	while ((*line)[start] == ' ')
 		start ++;
@@ -29,13 +29,13 @@ int	mp_ft_sp_start(char **line, char **way, int *fc)
 	else if ((*line)[start] == ' ')
 		start = mp_ft_next(*line, 0);
 	if (start == 0)
-		mp_exit("cub3d: some elements have no information.", line);
+		mp_exit("cub3d: some elements have no information\n", line);
 	return (start);
 }
 
 int	mp_ft_sp_finish(char **line, int start)
 {
 	if (mp_ft_next(*line, start) != 0)
-		mp_exit("cub3d: some elements have too many infomation.", line);
+		mp_exit("cub3d: some elements have too many infomation\n", line);
 	return (0);
 }

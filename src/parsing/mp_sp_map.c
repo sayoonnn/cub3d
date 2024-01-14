@@ -24,7 +24,7 @@ void	msm_ml_copy(t_mp *mp, int min_x, int max_x)
 	{
 		mp->map[i] = malloc(max_x - min_x + 2);
 		if ((mp->map)[i] == 0)
-			mp_exit("cub3d: malloc error", 0);
+			mp_exit("cub3d: malloc error\n", 0);
 		j = 0;
 		while (j < max_x - min_x + 1)
 		{
@@ -49,7 +49,7 @@ void	msm_malloc(t_mp *mp, int min_x)
 	max_x = 0;
 	mp->map = malloc(sizeof(char *) * mp->hight);
 	if (mp->map == 0)
-		mp_exit("cub3d: malloc error.", 0);
+		mp_exit("cub3d: malloc error\n", 0);
 	now = mp->m_data;
 	while (now != 0)
 	{
@@ -87,12 +87,12 @@ int	msm_lc_min(char **line, t_md **now, int *man)
 			if (ch == 'N' || ch == 'S' || ch == 'W' || ch == 'E')
 				*man += 1;
 			else if (ch != ' ' && ch != '0' && ch != '1')
-				mp_exit("cub3d: map file has wrong word(s).", line);
+				mp_exit("cub3d: map file has wrong word(s)\n", line);
 		}
 		(*now)->len ++;
 	}
 	if (isok == 0)
-		mp_exit("cub3d: map file has empty (or white space) line(s).", line);
+		mp_exit("cub3d: map file has empty (or white space) line(s)\n", line);
 	return (min_x);
 }
 
@@ -102,13 +102,13 @@ int	msm_linecheck(char **line, t_md **now, int *man)
 
 	*now = malloc(sizeof(t_md));
 	if (*now == 0)
-		mp_exit("cub3d: malloc error.", line);
+		mp_exit("cub3d: malloc error\n", line);
 	(*now)->len = 0;
 	(*now)->line = 0;
 	(*now)->next = 0;
 	min_x = msm_lc_min(line, now, man);
 	if (*man > 1)
-		mp_exit("cub3d: too many player.", line);
+		mp_exit("cub3d: too many player\n", line);
 	(*now)->line = *line;
 	*line = 0;
 	return (min_x);
@@ -127,7 +127,7 @@ void	mp_sp_map(t_mp *mp, char **line, int fd)
 	while (1)
 	{
 		if (mp->hight >= 2147483647)
-			mp_exit("cub3d: map is too big.", 0);
+			mp_exit("cub3d: map is too big\n", 0);
 		now = &((*now)->next);
 		*line = mp_gnl(fd, mp);
 		if (*line == 0)
@@ -138,6 +138,6 @@ void	mp_sp_map(t_mp *mp, char **line, int fd)
 		mp->hight ++;
 	}
 	if (man == 0)
-		mp_exit("cub3d: no player.", 0);
+		mp_exit("cub3d: no player\n", 0);
 	msm_malloc(mp, min_x);
 }

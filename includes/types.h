@@ -17,6 +17,8 @@
 # define HEIGHT	900
 # define SIDE_X	0
 # define SIDE_Y	1
+# define KEY_EVENT	2
+# define CLOSE_BTN	17
 
 enum e_bool
 {

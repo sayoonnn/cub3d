@@ -26,7 +26,7 @@ char	*mgnl_check(t_mp *mp)
 		return (0);
 	copy = malloc(i + 1);
 	if (copy == 0)
-		mp_exit("cub3d: malloc error.", 0);
+		mp_exit("cub3d: malloc error\n", 0);
 	mgnl_ft_strcpy(mp->gnl, copy, i);
 	mgnl_ch_remain(mp, i + 1);
 	return (copy);
@@ -45,7 +45,7 @@ void	mgnl_ch_remain(t_mp *mp, int def)
 	{
 		remain = malloc(aft + 1);
 		if (remain == 0)
-			mp_exit("cub3d: malloc error.", 0);
+			mp_exit("cub3d: malloc error\n", 0);
 		mgnl_ft_strcpy(&(mp->gnl[def]), remain, aft);
 	}
 	free(mp->gnl);
@@ -66,7 +66,7 @@ void	mgnl_copy(t_mp *mp, char *line, int len)
 		len --;
 	copy = malloc(i + len + 1);
 	if (copy == 0)
-		mp_exit("cub3d: malloc error.", 0);
+		mp_exit("cub3d: malloc error\n", 0);
 	if (mp->gnl != 0)
 		mgnl_ft_strcpy(mp->gnl, copy, i);
 	mgnl_ft_strcpy(line, &(copy[i]), len);

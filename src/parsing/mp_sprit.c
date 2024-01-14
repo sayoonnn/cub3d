@@ -24,7 +24,7 @@ int	mp_sp_wall(char **way, char **line)
 		i ++;
 	*way = malloc(i + 1);
 	if (*way == 0)
-		mp_exit("cub3d: malloc error.", line);
+		mp_exit("cub3d: malloc error\n", line);
 	j = 0;
 	while (j < i)
 	{
@@ -40,9 +40,9 @@ int	mp_sp_fc_total(char **line, int *num, int start, int i)
 	int	total;
 
 	if ((*line)[start + i] != ' ' && (*line)[start + i] != '\0')
-		mp_exit("cub3d: some elements have wrong information.", line);
+		mp_exit("cub3d: some elements have wrong information\n", line);
 	else if (num[2] == -1)
-		mp_exit("cub3d: please put the fc info 'fc 000,000,000'.", line);
+		mp_exit("cub3d: please put the fc info 'fc 000,000,000'\n", line);
 	total = 0;
 	i = 0;
 	while (i < 3)
@@ -70,7 +70,7 @@ int	mp_sp_fc(int *fc, char **line)
 		num[j] = num[j] * 10 + ((*line)[start + i] - '0');
 		i ++;
 		if (num[j] > 255)
-			mp_exit("cub3d: color number is too big.", line);
+			mp_exit("cub3d: color number is too big\n", line);
 		if ((*line)[start + i] == ',' && j < 2)
 		{
 			i ++;
@@ -126,9 +126,9 @@ void	mp_sprit(int fd, t_mp *mp)
 			break ;
 		}
 		else if (data == -2)
-			mp_exit("cub3d: you put the wrong word(s).", &line);
+			mp_exit("cub3d: you put the wrong word(s)\n", &line);
 		else if (data != 0)
-			mp_exit("cub3d: you make the line that is not empty", &line);
+			mp_exit("cub3d: you make the line that is not empty\n", &line);
 		free(line);
 	}
 	close(fd);

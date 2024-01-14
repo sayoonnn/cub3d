@@ -48,7 +48,7 @@ void	mp_isnameok(char *name)
 		}
 		i ++;
 	}
-	mp_exit("cub3d: file format is not '.cub'.", 0);
+	mp_exit("cub3d: file format is not '.cub'\n", 0);
 }
 
 int	mp_open(char *name)
@@ -57,7 +57,7 @@ int	mp_open(char *name)
 
 	fd = open(name, O_RDONLY);
 	if (fd == -1)
-		mp_exit("cub3d: the file is not exist.", 0);
+		mp_exit("cub3d: the file is not exist\n", 0);
 	return (fd);
 }
 
@@ -65,7 +65,7 @@ void	mp_isdataok(t_mp *mp)
 {
 	if (mp->no == 0 || mp->so == 0 || mp->ea == 0 || mp->ea == 0 || \
 		mp->len < 3 || mp->hight < 3 || mp->f == -1 || mp->c == -1)
-		mp_exit("cub3d: some infomation is missing.", 0);
+		mp_exit("cub3d: some infomation is missing\n", 0);
 }
 
 void	cu_mapping(char *name, t_mp *mp)

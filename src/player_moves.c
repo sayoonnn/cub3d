@@ -103,6 +103,7 @@ int	exit_cub3d(t_info *info)
 {
 	mlx_destroy_image(info->win.mlx, info->screen.img);
 	mlx_destroy_window(info->win.mlx, info->win.win);
+	mp_free(0);
 	exit(0);
 	return (1);
 }

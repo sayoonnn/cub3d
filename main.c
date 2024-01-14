@@ -44,7 +44,7 @@ int	main(int ac, char **av)
 	load_texture(&info);
 	init_player(&info.p, &info.map);
 	draw_screen(&info);
-	mlx_hook(info.win.win, 2, 0, key_press, &info);
-	mlx_hook(info.win.win, 17, 0, exit_cub3d, NULL);
+	mlx_hook(info.win.win, KEY_EVENT, 0, key_press, &info);
+	mlx_hook(info.win.win, CLOSE_BTN, 0, exit_cub3d, &info);
 	mlx_loop(info.win.mlx);
 }

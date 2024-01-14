@@ -57,7 +57,7 @@ void	mp_mp(t_mp *mp, int i, int j, int def)
 		{
 			if ((def == 0 && mp_mp_nine(mp, i, j) != 0) || \
 				(def == 1 && mp_mp_three(mp, i, j + 1) != 0))
-				mp_exit("cub3d: the wall isn't close.", 0);
+				mp_exit("cub3d: the wall isn't close\n", 0);
 			else
 				def = 1;
 		}

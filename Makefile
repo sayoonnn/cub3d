@@ -48,7 +48,8 @@ MLX		=	mlx
 MLXA	=	mlx/libmlx.a
 
 CC		=	cc
-CFLAGS	=	-Wall -Werror -Wextra -O3 -g -fsanitize=address
+CFLAGS	=	-Wall -Werror -Wextra -O3 
+#-g -fsanitize=address
 MLXFLAG	=	-framework OpenGL -framework AppKit
 
 all :
