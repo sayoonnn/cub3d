@@ -12,25 +12,28 @@
 
 #include "cub3d.h"
 
-int	worldMap[12][12] = {
-	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,},
-	{1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1,},
-	{1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1,},
-	{1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1,},
-	{1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1,},
-	{1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1,},
-	{1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1,},
-	{1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1,},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,},
-	{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,},
-	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,}
-						};
+static int	load_map_info(int ac, char *av[], t_mp *mp)
+{
+	if (ac == 1)
+	{
+		ft_printf(2, "Error\ncub3d: need map file\n");
+		return (false);
+	}
+	if (ac > 2)
+	{
+		ft_printf(2, "Error\ncub3d: too many map files\n");
+		return (false);
+	}
+	cu_mapping(av[1], mp);
+	return (true);
+}
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_info		info;
 
+	if (!load_map_info(ac, av, &info.map))
+		return (1);
 	info.win.mlx = mlx_init();
 	if (!info.win.mlx)
 		print_err();
@@ -39,7 +42,7 @@ int	main(void)
 		print_err();
 	init_screen(&info.win, &info.screen);
 	load_texture(&info);
-	init_player(&info.p);
+	init_player(&info.p, &info.map);
 	draw_screen(&info);
 	mlx_hook(info.win.win, 2, 0, key_press, &info);
 	mlx_hook(info.win.win, 17, 0, exit_cub3d, NULL);

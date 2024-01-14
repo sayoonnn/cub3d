@@ -13,7 +13,7 @@
 #include "cub3d.h"
 #include <math.h>
 
-static void	move_fore_back(int key, t_player *p)
+static void	move_fore_back(int key, t_player *p, t_mp *map)
 {
 	double	dx;
 	double	dy;
@@ -22,21 +22,21 @@ static void	move_fore_back(int key, t_player *p)
 	dy = p->dir_y * p->move_speed;
 	if (key == key_w)
 	{
-		if (!worldMap[(int)(p->pos_x + dx)][(int)(p->pos_y)])
+		if (map->map[(int)(p->pos_x + dx)][(int)(p->pos_y)] != '1')
 			p->pos_x += dx;
-		if (!worldMap[(int)(p->pos_x)][(int)(p->pos_y + dy)])
+		if (map->map[(int)(p->pos_x)][(int)(p->pos_y + dy)] != '1')
 			p->pos_y += dy;
 	}
 	if (key == key_s)
 	{
-		if (!worldMap[(int)(p->pos_x - dx)][(int)(p->pos_y)])
+		if (map->map[(int)(p->pos_x - dx)][(int)(p->pos_y)] != '1')
 			p->pos_x -= dx;
-		if (!worldMap[(int)(p->pos_x)][(int)(p->pos_y - dy)])
+		if (map->map[(int)(p->pos_x)][(int)(p->pos_y - dy)] != '1')
 			p->pos_y -= dy;
 	}
 }
 
-static void	move_left_right(int key, t_player *p)
+static void	move_left_right(int key, t_player *p, t_mp *map)
 {
 	double	dx;
 	double	dy;
@@ -45,16 +45,16 @@ static void	move_left_right(int key, t_player *p)
 	dy = p->cam_y * p->move_speed;
 	if (key == key_a)
 	{
-		if (!worldMap[(int)(p->pos_x - dx)][(int)(p->pos_y)])
+		if (map->map[(int)(p->pos_x - dx)][(int)(p->pos_y)] != '1')
 			p->pos_x -= dx;
-		if (!worldMap[(int)(p->pos_x)][(int)(p->pos_y - dy)])
+		if (map->map[(int)(p->pos_x)][(int)(p->pos_y - dy)] != '1')
 			p->pos_y -= dy;
 	}
 	if (key == key_d)
 	{
-		if (!worldMap[(int)(p->pos_x + dx)][(int)(p->pos_y)])
+		if (map->map[(int)(p->pos_x + dx)][(int)(p->pos_y)] != '1')
 			p->pos_x += dx;
-		if (!worldMap[(int)(p->pos_x)][(int)(p->pos_y + dy)])
+		if (map->map[(int)(p->pos_x)][(int)(p->pos_y + dy)] != '1')
 			p->pos_y += dy;
 	}
 }
@@ -87,9 +87,9 @@ static void	rotate_cam(int key, t_player *p)
 int	key_press(int key, t_info *info)
 {
 	if (key == key_w || key == key_s)
-		move_fore_back(key, &info->p);
+		move_fore_back(key, &info->p, &info->map);
 	else if (key == key_a || key == key_d)
-		move_left_right(key, &info->p);
+		move_left_right(key, &info->p, &info->map);
 	else if (key == key_left || key == key_right)
 		rotate_cam(key, &info->p);
 	else if (key == key_esc)

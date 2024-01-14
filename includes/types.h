@@ -43,6 +43,26 @@ enum e_direction
 	north
 };
 
+typedef struct s_md{
+	int			len;
+	char		*line;
+	struct s_md	*next;
+}				t_md;
+
+typedef struct s_mp{
+	t_md	*m_data;
+	char	**map;
+	char	*gnl;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	int		f;
+	int		c;
+	int		len;
+	int		hight;
+}				t_mp;
+
 typedef struct s_win
 {
 	void	*mlx;
@@ -109,6 +129,7 @@ typedef struct s_info
 	t_player	p;
 	t_texture	t;
 	t_img		screen;
+	t_mp		map;
 }				t_info;
 
 #endif

@@ -42,10 +42,10 @@ static void	load_image(t_info *info, int *texture, char *path)
 
 void	load_texture(t_info *info)
 {
-	load_image(info, info->t.east, "textures/greystone.xpm");
-	load_image(info, info->t.west, "textures/redbrick.xpm");
-	load_image(info, info->t.south, "textures/mossy.xpm");
-	load_image(info, info->t.north, "textures/eagle.xpm");
+	load_image(info, info->t.east, info->map.ea);
+	load_image(info, info->t.west, info->map.we);
+	load_image(info, info->t.south, info->map.so);
+	load_image(info, info->t.north, info->map.no);
 }
 
 void	init_screen(t_win *win, t_img *screen)

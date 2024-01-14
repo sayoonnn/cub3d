@@ -18,14 +18,13 @@
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 # include "types.h"
-
-extern int	worldMap[12][12];
+# include "cu_mapping.h"
 
 void	draw_screen(t_info *info);
 void	draw_wall(t_info *info, t_vars *v, int x);
-void	draw_floor_ceil(t_vars *v, t_win *win, int x);
+void	draw_floor_ceil(t_vars *v, t_win *win, t_mp *map, int x);
 void	print_screen(t_win *win, t_img *screen);
-void	init_player(t_player *p);
+void	init_player(t_player *p, t_mp *map);
 
 int		key_press(int key, t_info *info);
 int		exit_cub3d(t_info *info);

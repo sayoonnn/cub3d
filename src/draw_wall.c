@@ -41,7 +41,7 @@ static void	init_vars(t_vars *v, t_player *p, int x)
 	}
 }
 
-static void	check_wall(t_vars *v)
+static void	check_wall(t_vars *v, t_mp *map)
 {
 	int	is_hit;
 
@@ -60,7 +60,7 @@ static void	check_wall(t_vars *v)
 			v->cur_y += v->step_y;
 			v->side = 1;
 		}
-		if (worldMap[v->cur_x][v->cur_y] > 0)
+		if (map->map[v->cur_x][v->cur_y] == '1')
 			is_hit = true;
 	}
 }
@@ -110,9 +110,9 @@ void	fill_buffer(t_vars *v, t_info *info, int x)
 		tex_end = (int)tex_screen_position & (64 - 1);
 		tex_screen_position += step;
 		if (v->side == SIDE_X && v->cur_x > info->p.pos_x)
-			info->win.buffer[y][x] = info->t.north[64 * tex_end + v->tex_start];
-		else if (v->side == SIDE_X && v->cur_x < info->p.pos_x)
 			info->win.buffer[y][x] = info->t.south[64 * tex_end + v->tex_start];
+		else if (v->side == SIDE_X && v->cur_x < info->p.pos_x)
+			info->win.buffer[y][x] = info->t.north[64 * tex_end + v->tex_start];
 		else if (v->side == SIDE_Y && v->cur_y > info->p.pos_y)
 			info->win.buffer[y][x] = info->t.east[64 * tex_end + v->tex_start];
 		else
@@ -126,7 +126,7 @@ void	draw_wall(t_info *info, t_vars *v, int x)
 	v->cur_x = (int)info->p.pos_x;
 	v->cur_y = (int)info->p.pos_y;
 	init_vars(v, &info->p, x);
-	check_wall(v);
+	check_wall(v, &info->map);
 	detect_texture_pos(v, &info->p);
 	fill_buffer(v, info, x);
 }

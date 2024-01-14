@@ -37,7 +37,7 @@ void	draw_screen(t_info *info)
 	while (x < WIDTH)
 	{
 		draw_wall(info, &v, x);
-		draw_floor_ceil(&v, &info->win, x);
+		draw_floor_ceil(&v, &info->win, &info->map, x);
 		x++;
 	}
 	print_screen(&info->win, &info->screen);

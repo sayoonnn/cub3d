@@ -20,10 +20,19 @@ SRC		=	main.c\
 			print_screen.c\
 			player_moves.c\
 			load_textures.c\
-			print_err.c
+			print_err.c\
+			cu_mapping.c\
+			mp_free.c\
+			mp_ft.c\
+			mp_gnl_util.c\
+			mp_gnl.c\
+			mp_mapping.c\
+			mp_sp_map.c\
+			mp_sprit_util.c\
+			mp_sprit.c
 
-
-vpath %.c	$(addprefix src, /.)
+vpath %.c	$(addprefix src, /.\
+			$(addprefix /parsing, /.))
 
 OBJDIR	=	.objs
 OBJ		=	$(SRC:%.c=$(OBJDIR)/%.o)
@@ -39,8 +48,7 @@ MLX		=	mlx
 MLXA	=	mlx/libmlx.a
 
 CC		=	cc
-CFLAGS	=	-Wall -Werror -Wextra -O3 
-#-g -fsanitize=address
+CFLAGS	=	-Wall -Werror -Wextra -O3 -g -fsanitize=address
 MLXFLAG	=	-framework OpenGL -framework AppKit
 
 all :

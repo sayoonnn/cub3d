@@ -13,7 +13,7 @@
 #include "cub3d.h"
 #include <math.h>
 
-void	draw_floor_ceil(t_vars *v, t_win *win, int x)
+void	draw_floor_ceil(t_vars *v, t_win *win, t_mp *map, int x)
 {
 	int	y;
 
@@ -22,8 +22,8 @@ void	draw_floor_ceil(t_vars *v, t_win *win, int x)
 	y = v->draw_end + 1;
 	while (y < HEIGHT)
 	{
-		win->buffer[y][x] = 0x99FFFFFF;
-		win->buffer[HEIGHT - y][x] = 0xDEFFFFFF;
+		win->buffer[y][x] = map->f;
+		win->buffer[HEIGHT - y][x] = map->c;
 		y++;
 	}
 }
