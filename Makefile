@@ -48,12 +48,12 @@ MLX		=	mlx
 MLXA	=	mlx/libmlx.a
 
 CC		=	cc
-CFLAGS	=	-Wall -Werror -Wextra -O3 
-#-g -fsanitize=address
+CFLAGS	=	-Wall -Werror -Wextra -O3 -fsanitize=address -g 
+
 MLXFLAG	=	-framework OpenGL -framework AppKit
 
 all :
-	@make $(NAME) -j8
+	@make $(NAME) -j2
 
 $(NAME): $(OBJ) $(LIBFTA) $(MLXA)
 	@$(CC) $(CFLAGS) $(MLXFLAG) $(OBJ) $(LIBFTA) $(MLXA) -o $@
@@ -75,6 +75,7 @@ $(OBJDIR):
 
 clean:
 	@make -C $(LIBFT) fclean
+	@make -C $(MLX) clean
 	@rm -rf $(OBJDIR)
 	@echo CLEAN DONE ✅
 

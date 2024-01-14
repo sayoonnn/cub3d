@@ -26,8 +26,8 @@ static void	find_location(t_mp *map, int *x, int *y, char *dir)
 			if (map->map[j][i] == 'N' || map->map[j][i] == 'S' || \
 			map->map[j][i] == 'E' || map->map[j][i] == 'W')
 			{
-				*x = i;
-				*y = j;
+				*x = j;
+				*y = i;
 				*dir = map->map[j][i];
 				return ;
 			}
