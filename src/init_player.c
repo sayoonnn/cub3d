@@ -35,7 +35,7 @@ static void	find_location(t_mp *map, int *x, int *y, char *dir)
 	}
 }
 
-static void	detect_player_dir(t_player *p, char dir)
+static void	detect_player_dir_ns(t_player *p, char dir)
 {
 	if (dir == 'N')
 	{
@@ -51,6 +51,10 @@ static void	detect_player_dir(t_player *p, char dir)
 		p->cam_x = 0;
 		p->cam_y = -0.66;
 	}
+}
+
+static void	detect_player_dir_we(t_player *p, char dir)
+{
 	if (dir == 'E')
 	{
 		p->dir_x = 0;
@@ -76,7 +80,10 @@ void	init_player(t_player *p, t_mp *map)
 	find_location(map, &x, &y, &dir);
 	p->pos_x = x + 0.5;
 	p->pos_y = y + 0.5;
-	detect_player_dir(p, dir);
+	if (dir == 'N' || dir == 'S')
+		detect_player_dir_ns(p, dir);
+	else
+		detect_player_dir_we(p, dir);
 	p->move_speed = 0.1;
 	p->rot_speed = 0.1;
 }
