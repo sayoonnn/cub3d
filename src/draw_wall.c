@@ -52,13 +52,13 @@ static void	check_wall(t_vars *v, t_mp *map)
 		{
 			v->start_x += v->grad_x;
 			v->cur_x += v->step_x;
-			v->side = 0;
+			v->side = SIDE_X;
 		}
 		else
 		{
 			v->start_y += v->grad_y;
 			v->cur_y += v->step_y;
-			v->side = 1;
+			v->side = SIDE_Y;
 		}
 		if (map->map[v->cur_x][v->cur_y] == '1')
 			is_hit = true;

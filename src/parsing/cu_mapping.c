@@ -36,7 +36,7 @@ void	mp_isnameok(char *name)
 	i = 0;
 	while (name[i] != '\0')
 	{
-		if (name[i] == '.' && i != 0 && name[i - 1] != '\\')
+		if (name[i] == '.' && i != 0 && name[i - 1] != '/')
 		{
 			ii = 0;
 			while (name[i + ii] == ".cub"[ii])
