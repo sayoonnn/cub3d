@@ -1,14 +1,7 @@
-<pre>
-               _      _____ ______ 
-             | |    |____ ||  _  \
-  ___  _   _ | |__      / /| | | |
- / __|| | | || '_ \     \ \| | | |
-| (__ | |_| || |_) |.___/ /| |/ / 
- \___| \__,_||_.__/ \____/ |___/   
-</pre>
-
-
 ![cub3D](https://github.com/user-attachments/assets/87a78bdb-c042-4b56-b5b2-904488da84df)
+
+![](https://img.shields.io/badge/c-A8B9CC?style=for-the-badge&logo=c&logoColor=white)
+![](https://img.shields.io/badge/cmake-064F8C?style=for-the-badge&logo=cmake&logoColor=white)
 
 ## 개요
 [Wolfenstein 3D](https://en.wikipedia.org/wiki/Wolfenstein_3D)의 `레이 캐스팅`을 구현해보는 프로젝트로    
@@ -52,10 +45,10 @@ C 30,30,30
 ```
   - `NO`, `SO`, `WE`, `EA`는 각각, 북, 남, 동, 서의 텍스쳐 설정입니다
   - 텍스쳐는 `.xpm` 형식만 가능합니다
-  - F는 바닥, C는 천장의 색입니다
+  - `F`는 바닥, `C`는 천장의 색입니다
   - 가장 마지막 부분은 움직일 수 있는 공간으로
     - `1`은 벽, `0`은 빈공간을 의미합니다
-    - 플레이어는 바라보고 있는 방향을 설정할 수 있으며, `W`, `E`, `N`, `S`로 설정 가능합니다
+    - 플레이어는 `W`, `E`, `N`, `S`로 위치를 설정 가능하며, 각각 서, 동, 북, 남을 바라보도록 할 수 있습니다
     - 맵은 항상 닫힌 공간이어야 하며, 뚫려있을 경우 실행할 수 없습니다
 
 
