@@ -12,7 +12,9 @@
 
 ## 개요
 [Wolfenstein 3D](https://en.wikipedia.org/wiki/Wolfenstein_3D)의 `레이 캐스팅`을 구현해보는 프로젝트로    
-[Lay Casting](https://en.wikipedia.org/wiki/Ray_casting)을 이용하여 벽, 바탕, 천장을 그립니다
+
+- 42 school의 [minilib-mlx](https://harm-smits.github.io/42docs/libs/minilibx.html) 라이브러리를 이용했습니다
+- [Lay Casting](https://en.wikipedia.org/wiki/Ray_casting)을 이용하여 벽, 바탕, 천장을 그립니다
 
 
 ## 사용 방법
